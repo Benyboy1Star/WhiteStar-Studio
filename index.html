@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhiteStar Studio | Digital Excellence</title>
+    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22 fill=%22white%22>✦</text></svg>">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="top-anchor"></div>
+
+    <canvas id="particle-canvas"></canvas>
+
+    <nav class="main-nav" id="top">
+        <div class="logo">
+            <a href="#top-anchor" class="logo-link">
+                <span class="star-glow">✦</span> 
+                <span>WhiteStar Studio</span> 
+                <span class="star-glow">✦</span>
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="#vision">Vision</a>
+            <a href="#team">Team</a>
+            <a href="https://discord.gg/TZrqgaxjku" target="_blank">Discord</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-flex-container">
+            <div class="hero-text reveal">
+                <h1>
+                    Willkommen bei <br> 
+                    <span class="studio-line">
+                        <span class="star-glow">✦</span>WhiteStar Studio<span class="star-glow">✦</span>
+                    </span>
+                </h1>
+                <p class="description">WhiteStar Studio ein Roblox Spiel</p>
+                <div class="cta-area">
+                    <button class="primary-btn" onclick="document.getElementById('vision').scrollIntoView({behavior: 'smooth'})">Projekt entdecken</button>
+                </div>
+            </div>
+            <div class="hero-image reveal">
+                <img src="WhiteStar.png" alt="WhiteStar Studio Visual" class="main-hero-img">
+            </div>
+        </div>
+    </header>
+
+    <section class="single-overview reveal" id="vision">
+        <div class="overview-container">
+            <div class="visual-placeholder large">
+                <span class="star-glow">✦</span> 
+                <span>WhiteStar Projektvorschau</span> 
+                <span class="star-glow">✦</span>
+            </div>
+            <div class="vision-content">
+                <h3 style="font-size: 2rem; margin-bottom: 15px;">Unsere Vision</h3>
+                <p class="description" style="margin: 0 auto 25px;">Comming Soon...</p>
+                <a href="https://discord.gg/TZrqgaxjku" target="_blank" style="color: #8b5cf6; text-decoration: none; font-weight: bold; font-size: 1.1rem;">Community beitreten →</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="team-section" id="team">
+        <div class="team-header reveal">
+            <h3><span class="star-glow">✦</span> Unser Team <span class="star-glow">✦</span></h3>
+            <p class="description">Das Team von WhiteStar</p>
+        </div>
+        
+        <div class="team-level reveal">
+            <span class="level-title">Owner</span>
+            <div class="team-grid">
+                <div class="team-member gold-border">
+                    <img src="maxPfp.png" alt="Owner" class="discord-avatar">
+                    <h4>Owner</h4>
+                    <p>The owner of the entire studio</p>
+                    <a href="#" class="discord-tag"><span class="at-symbol">@</span>1star4k5</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="team-level reveal">
+            <span class="level-title">Co Owner</span>
+            <div class="team-grid">
+                <div class="team-member silver-border">
+                    <img src="avatar2.png" alt="Co Owner" class="discord-avatar">
+                    <h4>Co Owner</h4>
+                    <p>The second owner of the entire studio</p>
+                    <a href="#" class="discord-tag"><span class="at-symbol">@</span>sleepless_season</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="team-level reveal">
+            <span class="level-title">Manager</span>
+            <div class="team-grid">
+                <div class="team-member manager-border">
+                    <img src="BenPfp.png" alt="Manager" class="discord-avatar">
+                    <h4>Manager</h4>
+                    <p>The Discord and Website Manager</p>
+                    <a href="#" class="discord-tag"><span class="at-symbol">@</span>Benyboy1</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="team-level reveal">
+            <span class="level-title">Developer</span>
+            <div class="team-grid">
+                <div class="team-member dev-border">
+                    <img src="avatar4.png" alt="Developer" class="discord-avatar">
+                    <h4>Developer</h4>
+                    <h5 style="color: #10b981; font-weight: normal; margin-bottom: 10px;">The game developer</h5>
+                    <a href="#" class="discord-tag"><span class="at-symbol">@</span>Dev</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer reveal">
+        <div class="footer-info">
+            <p>&copy; 2026 <a href="#top-anchor" class="back-to-top-link">WhiteStar Studio</a>. Alle Rechte vorbehalten.</p>
+            <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.5;">Minimal Space Design &bull; Developed with Precision</p>
+        </div>
+    </footer>
+
+    <a href="#top-anchor" id="backToTop" title="Nach oben">↑</a>
+
+    <script>
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        const btt = document.getElementById('backToTop');
+        let particles = [];
+        const particleCount = 80;
+        const mouse = { x: null, y: null, radius: 120 };
+
+        window.addEventListener('mousemove', (e) => { mouse.x = e.x; mouse.y = e.y; });
+        function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = Math.random() * 0.4 - 0.2;
+                this.speedY = Math.random() * 0.4 - 0.2;
+                this.density = (Math.random() * 20) + 1;
+            }
+            draw() {
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.closePath();
+                ctx.fill();
+            }
+            update() {
+                let dx = mouse.x - this.x;
+                let dy = mouse.y - this.y;
+                let distance = Math.sqrt(dx * dx + dy * dy);
+                if (distance < mouse.radius) {
+                    let force = (mouse.radius - distance) / mouse.radius;
+                    this.x -= (dx / distance) * force * this.density;
+                    this.y -= (dy / distance) * force * this.density;
+                } else {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+                }
+                if (this.x > canvas.width) this.x = 0; else if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0; else if (this.y < 0) this.y = canvas.height;
+            }
+        }
+
+        function init() { for (let i = 0; i < particleCount; i++) particles.push(new Particle()); }
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => { p.draw(); p.update(); });
+            requestAnimationFrame(animate);
+        }
+        init(); animate();
+
+        const reveals = document.querySelectorAll('.reveal');
+        const handleScroll = () => {
+            // Reveal Animationen
+            reveals.forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add('show');
+            });
+
+            // Back to Top Sichtbarkeit
+            if (window.scrollY > 400) {
+                btt.classList.add('show');
+            } else {
+                btt.classList.remove('show');
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('load', handleScroll);
+        
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === "#") return;
+                e.preventDefault();
+                const target = document.querySelector(targetId);
+                if(target) target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>

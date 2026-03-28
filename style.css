@@ -1,0 +1,365 @@
+/* --- 1. GRUNDKONFIGURATION & SCROLLBAR --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar für den Space-Look */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #000000;
+}
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 10px;
+    border: 2px solid #000;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #8b5cf6;
+}
+
+#top-anchor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 1px;
+    width: 1px;
+}
+
+body {
+    font-family: 'Helvetica', Arial, sans-serif;
+    background: #000000 radial-gradient(ellipse at bottom, #1B2735 0%, #000000 100%);
+    color: #ffffff;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* --- INTERAKTIVES PARTIKEL-CANVAS & STERNE --- */
+#particle-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; 
+    pointer-events: none;
+}
+
+body::before, body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background: transparent url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/123163/stars.png') repeat;
+    z-index: -2; 
+    opacity: 0.3;
+    animation: moveStarsParallax 150s linear infinite;
+}
+
+body::after {
+    background-size: 600px 600px;
+    opacity: 0.15;
+    animation-duration: 100s;
+}
+
+@keyframes moveStarsParallax {
+    from { transform: translate(0, 0); }
+    to { transform: translate(-50%, -50%); }
+}
+
+/* --- 2. NAVIGATION --- */
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 5%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: sticky;
+    top: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(15px);
+    z-index: 1000;
+}
+
+.logo-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: transform 0.3s ease;
+}
+
+.logo-link:hover { transform: scale(1.02); }
+
+.nav-links a {
+    text-decoration: none;
+    color: #ffffff;
+    margin-left: 30px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #8b5cf6;
+    text-shadow: 0 0 10px rgba(139, 92, 246, 0.8);
+}
+
+/* --- 3. HERO SEKTION --- */
+.hero {
+    padding: 100px 5%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: center;
+}
+
+.hero-flex-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.hero h1 {
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    line-height: 1.2;
+    font-weight: 800;
+    margin-bottom: 25px;
+}
+
+.star-glow {
+    color: #ffffff; 
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.9); 
+    animation: starPulse 3s infinite ease-in-out;
+}
+
+.description {
+    max-width: 450px;
+    font-size: 1.1rem;
+    color: #bbbbbb;
+    margin-bottom: 40px;
+}
+
+.main-hero-img {
+    max-width: 380px; 
+    width: 100%;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 50px rgba(255, 255, 255, 0.05);
+}
+
+.primary-btn {
+    background: #ffffff;
+    color: #000000;
+    padding: 18px 50px;
+    font-weight: bold;
+    border: 1px solid #ffffff;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+}
+
+.primary-btn:hover {
+    background: transparent;
+    color: #ffffff;
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
+}
+
+/* --- 4. VISION --- */
+.single-overview {
+    padding: 120px 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    text-align: center;
+}
+
+.visual-placeholder.large {
+    width: 100%;
+    max-width: 1000px; 
+    aspect-ratio: 21/9;
+    background: rgba(255, 255, 255, 0.02);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    margin-bottom: 40px;
+}
+
+/* --- 5. TEAM & DISCORD TAGS --- */
+.team-section {
+    padding: 120px 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.team-level { margin-bottom: 60px; width: 100%; text-align: center; }
+
+.level-title {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #888888;
+    margin-bottom: 30px;
+}
+
+.team-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.team-member {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 40px 30px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    text-align: center;
+    transition: all 0.5s cubic-bezier(0.2, 1, 0.2, 1);
+    width: 280px;
+    backdrop-filter: blur(10px);
+    box-shadow: inset 0 1px 1px rgba(255,255,255,0.1);
+}
+
+.team-member:hover {
+    transform: translateY(-15px);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.discord-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.4s ease;
+    object-fit: cover;
+}
+
+.discord-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+/* Hover-Farben */
+.gold-border:hover { border-color: #d4af37; box-shadow: 0 0 40px rgba(212, 175, 55, 0.2); }
+.gold-border:hover .discord-tag { color: #d4af37; border-color: #d4af37; }
+
+.silver-border:hover { border-color: #a0aec0; box-shadow: 0 0 40px rgba(160, 174, 192, 0.2); }
+.silver-border:hover .discord-tag { color: #a0aec0; border-color: #a0aec0; }
+
+.manager-border:hover { border-color: #8b5cf6; box-shadow: 0 0 40px rgba(139, 92, 246, 0.2); }
+.manager-border:hover .discord-tag { color: #8b5cf6; border-color: #8b5cf6; }
+
+.dev-border:hover { border-color: #10b981; box-shadow: 0 0 40px rgba(16, 185, 129, 0.2); }
+.dev-border:hover .discord-tag { color: #10b981; border-color: #10b981; }
+
+/* --- 6. BACK TO TOP BUTTON --- */
+#backToTop {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    font-size: 1.2rem;
+}
+
+#backToTop.show { opacity: 1; }
+#backToTop:hover { 
+    background: #ffffff; 
+    color: #000; 
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+}
+
+/* --- 7. FOOTER MIT WEISSEM GLOW --- */
+.footer {
+    padding: 80px 5% 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.3); /* Hellere Trennung */
+    text-align: center;
+    color: #ffffff;
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.05) 0%, transparent 100%);
+    box-shadow: 0 -20px 50px rgba(255, 255, 255, 0.08); /* Glow nach oben */
+    position: relative;
+}
+
+.footer-info p {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+    margin-bottom: 5px;
+}
+
+.back-to-top-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.back-to-top-link:hover {
+    text-shadow: 0 0 15px rgba(255, 255, 255, 1);
+}
+
+/* --- 8. ANIMATIONEN & MOBILE --- */
+@keyframes starPulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.2); opacity: 0.7; }
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1.2s cubic-bezier(0.2, 1, 0.2, 1);
+}
+.reveal.show { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 768px) {
+    .hero-flex-container { flex-direction: column-reverse; text-align: center; }
+    .nav-links { display: none; }
+    .main-nav { justify-content: center; }
+}
